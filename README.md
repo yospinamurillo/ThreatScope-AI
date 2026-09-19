@@ -1,34 +1,35 @@
-<p align="center">
-  <a href="https://github.com/yospinamurillo/ThreatScope-AI/actions"><img src="https://img.shields.io/github/actions/workflow/status/yospinamurillo/ThreatScope-AI/ci.yml?branch=main&label=ci&style=flat-square" alt="CI"></a>
-  <a href="https://github.com/yospinamurillo/ThreatScope-AI/blob/main/LICENSE"><img src="https://img.shields.io/github/license/yospinamurillo/ThreatScope-AI?style=flat-square" alt="License"></a>
-  <a href="https://github.com/yospinamurillo/ThreatScope-AI/issues"><img src="https://img.shields.io/github/issues/yospinamurillo/ThreatScope-AI?style=flat-square" alt="Issues"></a>
-  <a href="https://github.com/yospinamurillo/ThreatScope-AI/pulls"><img src="https://img.shields.io/github/issues-pr/yospinamurillo/ThreatScope-AI?style=flat-square" alt="PRs"></a>
-  <a href="https://github.com/yospinamurillo/ThreatScope-AI/commits"><img src="https://img.shields.io/github/last-commit/yospinamurillo/ThreatScope-AI?style=flat-square" alt="Last commit"></a>
-  <a href="https://github.com/yospinamurillo/ThreatScope-AI/stargazers"><img src="https://img.shields.io/github/stars/yospinamurillo/ThreatScope-AI?style=social" alt="Stars"></a>
-</p>
+# ThreatScope AI
 
-# ThreatScope-AI
+ThreatScope AI es una herramienta de auditoría de seguridad en navegador para analizar código fuente, configuraciones, logs, APIs y contextos de IAM con ayuda de modelos de IA. El objetivo es detectar vulnerabilidades, clasificarlas por severidad y sugerir remediaciones accionables sin requerir un backend complejo.
 
-ThreatScope-AI es un proyecto para detectar, clasificar y priorizar amenazas usando modelos de IA y reglas heurísticas. Este README ofrece una introducción rápida, instrucciones de puesta en marcha y pautas para contribuir.
+## ¿Qué hace?
 
-## Resumen
+- Analiza texto libre, código, configuraciones y logs
+- Detecta potenciales vulnerabilidades comunes: inyección, XSS, secretos expuestos, permisos excesivos, configuración insegura y más
+- Prioriza hallazgos por severidad: critical, high, medium, low e info
+- Sugiere recomendaciones concretas para mitigar cada riesgo
+- Está pensado como un prototipo funcional para uso local o demo
 
-- Objetivo: automatizar la identificación de amenazas y proporcionar paneles/alertas accionables.
-- Estado: maqueta / prototipo (actualiza el estado real aquí).
+## Características principales
 
-## Características (sugeridas)
-
-- Ingesta de logs y datos de seguridad.
-- Enriquecimiento con fuentes externas y modelos ML.
-- Detección de anomalías y clasificación de riesgo.
-- Exportación de alertas a sistemas externos (Slack, email, SIEM).
+- Interfaz web estática en HTML/JavaScript
+- Soporta varios tipos de análisis:
+  - Código fuente
+  - Configuración
+  - Red / infraestructura
+  - Logs del sistema
+  - API / endpoints
+  - IAM / permisos
+- Integración con la API de Anthropic para análisis con IA
+- Generación de hallazgos estructurados en formato JSON
 
 ## Requisitos
 
-- Node.js >= 16 / Python >= 3.9 (especifica lo que aplique). 
-- docker (opcional, para despliegue local)
+- Un navegador moderno (Chrome, Edge, Firefox o Safari)
+- Una API key válida de Anthropic
+- Acceso a Internet para consultar la API de Anthropic
 
-## Instalación rápida
+## Inicio rápido
 
 1. Clona el repositorio:
 
@@ -37,54 +38,70 @@ git clone https://github.com/yospinamurillo/ThreatScope-AI.git
 cd ThreatScope-AI
 ```
 
-2. Instala dependencias (ejemplo Node.js):
+2. Abre el archivo `threat_vulnerability_scanner.html` en tu navegador.
 
-```bash
-npm install
-# o
-pip install -r requirements.txt
-```
+3. Ingresa tu `Anthropic API key` en el campo correspondiente.
 
-3. Ejecuta en modo desarrollo:
+4. Pega el código, log, configuración o descripción del sistema a analizar.
 
-```bash
-npm run dev
-# o
-python -m threatscope_app
-```
-
-Ajusta los comandos anteriores según el stack real del repositorio.
+5. Selecciona el tipo de análisis y haz clic en `Iniciar análisis`.
 
 ## Uso
 
-Describe aquí cómo usar la herramienta, endpoints disponibles o cómo cargar datos de ejemplo.
+### Modo de uso recomendado
 
-## Contribuir
+- Para código fuente: pega snippets o repositorios parciales
+- Para configuraciones: añade YAML, JSON, .env, archivos de despliegue o políticas
+- Para logs: incluye eventos, errores, entradas de auditoría o mensajes de servidor
+- Para APIs: pega rutas, payloads, headers o ejemplos de llamadas
+- Para IAM: describe permisos, políticas, roles o entidades de acceso
 
-1. Abre un issue para discutir cambios grandes.
-2. Crea una rama: `git checkout -b feat/nombre-cambio`.
-3. Envía commits claros y abre un Pull Request.
+### Flujo típico
 
-Lee `CONTRIBUTING.md` si lo tienes para normas de estilo y pruebas.
+```text
+1. Escribe el contexto o código a analizar
+2. Elige el tipo de análisis
+3. Genera un escaneo con IA
+4. Revisa severidades y recomendaciones
+5. Corrige los hallazgos antes de desplegar o compartir el artefacto
+```
 
-## Buenas prácticas recomendadas (sugerencias)
+### Nota importante sobre la API key
 
-- Añade tests y CI (GitHub Actions) para validar cambios.
-- Documenta las APIs y el formato de datos de entrada/salida.
-- Añade ejemplos de datos y scripts de ingestión.
+Este proyecto usa la API de Anthropic directamente desde el navegador. Debes ingresar tu clave en el formulario para que la solicitud pueda autenticar correctamente. No se recomienda compartir tu clave en repositorios públicos ni almacenarla en archivos de configuración versionados.
 
-## License
+## Estructura del proyecto
 
-Este repositorio debería incluir un archivo `LICENSE`. El badge arriba enlaza al archivo (si existe).
+```text
+ThreatScope-AI/
+├── README.md
+├── LICENSE
+├── threat_vulnerability_scanner.html
+├── CONTRIBUTING.md
+├── SECURITY.md
+└── ...
+```
+
+## Desarrollo y contribución
+
+Consulta `CONTRIBUTING.md` para conocer el flujo de trabajo, estándares de calidad y recomendaciones para enviar cambios.
+
+## Seguridad
+
+Si encontraste una vulnerabilidad o un problema de seguridad, por favor revisa `SECURITY.md` antes de reportarlo.
+
+## Licencia
+
+Este proyecto se distribuye bajo la licencia MIT. Consulta el archivo `LICENSE` para ver el texto completo.
+
+## Estado del proyecto
+
+Este repositorio funciona como prototipo de evaluación de seguridad apoyado por IA. Puede adaptarse para escenarios internos, laboratorios, demos o análisis de seguridad manuales.
 
 ## Contacto
 
-Para preguntas o colaboración: `hola@tudominio.co` o abre un issue en el repositorio.
+Si deseas colaborar o presentar una mejora, abre un issue en GitHub o contacta al propietario del repositorio.
 
 ---
 
-_English (brief)_
-
-# ThreatScope-AI
-
-ThreatScope-AI is a project to detect, classify and prioritize threats using AI models and heuristics. See above for quickstart and contributing notes.
+ThreatScope AI is a browser-based security auditing tool designed to analyze source code, configurations, logs, APIs, and IAM contexts with AI assistance. The goal is to identify vulnerabilities, classify them by severity, and recommend actionable mitigations without requiring a full backend.
